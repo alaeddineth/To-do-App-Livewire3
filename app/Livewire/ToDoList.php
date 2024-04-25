@@ -25,6 +25,12 @@ class ToDoList extends Component
     {
         Todo::findOrFail($todoid)->delete();
     }
+    public function toggle($todoid)
+    {
+        $todo = todo::find($todoid);
+        $todo->completed = !$todo->completed;
+        $todo->save();
+    }
     public function render()
     {
         
