@@ -21,6 +21,10 @@ class ToDoList extends Component
         
         
     }
+    public function delete($todoid)
+    {
+        Todo::findOrFail($todoid)->delete();
+    }
     public function render()
     {
         
