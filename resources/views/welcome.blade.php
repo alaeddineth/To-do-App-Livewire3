@@ -26,7 +26,7 @@
         </div>
     </div>
     <div id="content" class="mx-auto" style="max-width:500px;">
-        @livewire('todolist');
+        @livewire('todolist')
     </div>
 
 </body>
