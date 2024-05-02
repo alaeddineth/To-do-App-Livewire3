@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Todo;
 use Livewire\WithPagination;
 
+
 class ToDoList extends Component
 {
     
@@ -23,12 +24,17 @@ class ToDoList extends Component
         Todo::create($validated);
         $this->reset('name');
         session()->flash('success',"created succesfully");
-        
-        
+        $this->resetPage();
     }
     public function delete($todoid)
-    {
+    {   try{
         Todo::findOrFail($todoid)->delete();
+        }catch(Exception $e) {
+
+            session()->flash('error','Failed to delete todo!');
+            return;
+        }
+        
     }
     public function toggle($todoid)
     {
